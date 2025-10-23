@@ -133,7 +133,8 @@ msfconsole
 serach vsftpd 2.3.4
 ```
 
-![[metasploit_search_vsftpd.png]]
+![Metasploit Search](images/metasploit_search_vsftpd.png)
+
 A pesquisa retorna o exploit `vsftpd_234_backdoor`, que tem classificação _excellent_ quanto à confiabilidade da exploração. Este exploit é projetado especificamente para aproveitar o backdoor dessa versão do vsftpd.
 
 Também podemos pesquisar diretamente no Exploit-DB (dentro ou fora do msfconsole)
@@ -141,7 +142,9 @@ Também podemos pesquisar diretamente no Exploit-DB (dentro ou fora do msfconsol
 searchsploit vsftpd 2.3.4
 ```
 
-![[searchsploit_vsftpd.png]]Aqui confirmamos não apenas o modulo do metasploit, o script em ruby, mas também um script autônomo, em python.  Agora é possível ver mais detalhes sobre o script, rodando novamente o comando mas buscando o nome do arquivo com a flag `-p`, que também copia o caminho do arquivo, ou fazer uma copia do arquivo com o `-m`.
+![Searchsploit](images/searchsploit_vsftpd.png)
+
+Aqui confirmamos não apenas o modulo do metasploit, o script em ruby, mas também um script autônomo, em python.  Agora é possível ver mais detalhes sobre o script, rodando novamente o comando mas buscando o nome do arquivo com a flag `-p`, que também copia o caminho do arquivo, ou fazer uma copia do arquivo com o `-m`.
 
 ### 4. Configurando
 Agora que identificamos o exploit, podemos configurar o metasploit para utiliza-lo com o caminho  ou, após o search, com o index que foi mostrado:
@@ -153,12 +156,12 @@ use 0
 
 Com o comando `show options` podemos ver os parâmetros que precisam ser configurados. Neste caso, o *RPORT*, que é a porta do serviço, já está configurada na padrão, então iremos inserir apenas o *RHOSTS*, que é o IP da maquina alvo. Inserimos com `set rhosts <IP>`:
 
-![[show_options.png]]
+![Show Options Command](images/show_options.png)
 
 ### 5. Executando o Exploit
 Agora basta executar o comando `exploit`:
 
-![[metasploit_success.png]]
+![Metasploit Success](images/metasploit_success.png)
 
 O exploit realiza a exploração com sucesso. Como não selecionamos um payload, ele escolhe automaticamente o *cmd/unix/interact*,  que se conecta ao bind shell criado, e com isso podemos interagir com o sistema da maquina alvo.
 Conseguimos ler o arquivo **"flag.txt"**, concluindo nosso objetivo.
@@ -334,7 +337,7 @@ end
 2. Use o comando `chmod +x vsftpd_simple.rb` para torná-lo executável
 3. Execute com `vsftpd_simple.rb <TARGET>` onde o target é o IP da maquina virtual do Metasploitable.
 
-![[script_success.png]]
+![Script Success](images/script_success.png)
 
 E assim como no Metasploit, o script consegue fazer a exploração com sucesso e podemos interagir com o sistema da maquina alvo.
 Conseguimos encontrar e ler o arquivo **"flag.txt"**, concluindo nosso objetivo com este método também.
